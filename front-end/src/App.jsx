@@ -7,8 +7,7 @@ import Cart from './pages/cart'
 import AboutUs from './pages/about'
 import Contact from './pages/contact'
 import NotFound from './pages/not-found'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {

@@ -1,7 +1,8 @@
 import React from "react";
 import Cakes from "../../data/products";
+import { useCart } from "../../context/CartContext";
 
-function CakeCard({ image, name, price, description }) {
+function CakeCard({ image, name, price, description, onAddToCart }) {
   return (
     <div className="border rounded-lg shadow-md p-1  ">
       <img
@@ -13,7 +14,7 @@ function CakeCard({ image, name, price, description }) {
         <h2 className="text-xl font-bold mt-2">{name}</h2>
         <p className="text-gray-700">{description}</p>
         <p className="text-lg font-semibold">{price} Ksh</p>
-        <button className="bg-pink-800 text-white rounded-lg px-4 py-2 mt-4 hover:bg-pink-600 transition duration-200">
+        <button onClick={onAddToCart}  className="bg-pink-800 text-white rounded-lg px-4 py-2 mt-4 hover:bg-pink-600 transition duration-200">
           Add to Cart
         </button>
       </div>
@@ -22,6 +23,13 @@ function CakeCard({ image, name, price, description }) {
 }
 
 function Products() {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (cake) => {
+    addToCart(cake);
+    alert(`${cake.name} added to cart!`);
+  };
+
   return (
     <div className="grid grid-cols-3 gap-[40px] p-5">
       {Cakes.map((cake) => (
@@ -31,6 +39,7 @@ function Products() {
           name={cake.name}
           price={cake.price}
           description={cake.description}
+          onAddToCart={() => handleAddToCart(cake)}
         />
       ))}
     </div>

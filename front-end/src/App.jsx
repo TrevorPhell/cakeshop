@@ -9,11 +9,12 @@ import Contact from './pages/contact'
 import NotFound from './pages/not-found'
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { CartProvider } from './context/CartContext'
 
 function App() {
 
   return (
-    <>
+    <CartProvider>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -26,8 +27,7 @@ function App() {
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-      
-    </>
+    </CartProvider>
   )
 }
 

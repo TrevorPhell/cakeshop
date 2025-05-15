@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Navbar( { currentPage } ) {
+function Navbar({ currentPage }) {
   const [menu, setmenu] = useState("home");
 
   return (
@@ -80,12 +80,14 @@ function Navbar( { currentPage } ) {
           )}{" "}
         </li>
       </ul>
-      <button
-        type="button"
-        className="bg-pink-800 rounded-3xl py-2 px-4 cursor-pointer hover:bg-pink-600 duration-200 hover:scale-105 text-white font-bold active:bg-pink-700 active:outline-8"
-      >
-        Log In
-      </button>
+      <Link to="/user-auth">
+        <button
+          type="button"
+          className="bg-pink-800 rounded-3xl py-2 px-4 cursor-pointer hover:bg-pink-600 duration-200 hover:scale-105 text-white font-bold active:bg-pink-700 active:outline-8"
+        >
+          Log In
+        </button>
+      </Link>
     </div>
   );
 }
